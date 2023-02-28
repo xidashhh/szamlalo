@@ -67,25 +67,27 @@ const Records = () =>{
         <>
         <form onSubmit={(event) => {event.preventDefault()}}>
 
-        <div className="errorMessage" style={{opacity: hasError ? '100%' : '0%'}}>{error}</div><br />
-        <label htmlFor="nameLabel">Name</label>
-        <input type="text" onChange={NameChange}/>
+            <div className="errorMessage" style={{opacity: hasError ? '100%' : '0%'}}>{error}</div><br />
+            <div className="formDiv">
+                <label htmlFor="nameLabel">Name</label><br />
+                <input type="text" onChange={NameChange}/><br />
 
-        <label htmlFor="ageLabel">Age</label>
-        <input type="number" onChange={AgeChange}/>
+                <label htmlFor="ageLabel">Age</label>
+                <br />
+                <input type="number" onChange={AgeChange}/><br />
 
-        <label htmlFor="emailLabel">E-mail</label>
-        <input type="text" onChange={EmailChange}/>
+                <label htmlFor="emailLabel">E-mail</label><br />
+                <input type="text" onChange={EmailChange}/><br />
 
 
-        <button onClick={addItem}>Hozzaad</button>
-        {/* <button onClick}>Modosit</button> */}
+                <button onClick={addItem} className={'buttonAdd'}>Add</button>
+                {/* <button onClick}>Modosit</button> */}
+            </div>
         </form>
 
 
         <table>
             <tr>
-                <th>ID</th>
                 <th>NAME</th>
                 <th>AGE</th>
                 <th>E-MAIL</th>
@@ -93,7 +95,6 @@ const Records = () =>{
             </tr>
             {records.map(item => 
             <tr key={item.id}>
-                <td>{item.id+1}</td>
                 <td>{item.name}</td>
                 <td>{item.age}</td>
                 <td>{item.email}</td>
