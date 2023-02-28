@@ -90,10 +90,15 @@ const Records = () =>{
         }
         else {
         setEditError(false)
-        records[id].name = nameEdit;
-        records[id].age = ageEdit;
-        records[id].email = emailEdit;
-        setRecords([...records])
+        records.forEach(element => {
+            if(element.id === id) {
+                element.name = nameEdit;
+                element.age = ageEdit;
+                element.email = emailEdit;
+                setRecords([...records])
+            }
+        });
+        
     }
 }
     
