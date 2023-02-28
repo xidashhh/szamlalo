@@ -143,12 +143,15 @@ const Records = () =>{
 
 
         <table>
-            <tr>
-                <th>NAME</th>
-                <th>AGE</th>
-                <th>E-MAIL</th>
-                <th>ACTIONS</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th>NAME</th>
+                    <th>AGE</th>
+                    <th>E-MAIL</th>
+                    <th>ACTIONS</th>
+                </tr>
+            </thead>
+            <tbody>
             {records.map(item => 
             <tr key={item.id}>
                 <td>{item.name}</td>
@@ -161,6 +164,7 @@ const Records = () =>{
             </tr>
             
             )}
+        </tbody>
         </table>
             
         </>
