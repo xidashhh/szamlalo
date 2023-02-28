@@ -34,7 +34,6 @@ const Records = () =>{
         }
         else {
             setRecords([...records, {id:nextId++, name: name, age:age, email:email}])
-            setErrorMsg("");
             setError(false)
         }
     }
