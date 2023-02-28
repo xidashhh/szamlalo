@@ -1,0 +1,19 @@
+body{
+    text-align: center;
+}
+
+table, th, td {
+    border: 1px solid;
+    border-collapse: collapse;
+}
+td {
+padding: 15px;
+}
+td:first-child{
+    font-weight: bold;
+    background-color: lightgray;
+}
+tr:first-child{
+    font-weight: bold;
+    background-color: lightgray;
+}

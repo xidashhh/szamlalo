@@ -1,0 +1,8 @@
+.panel {
+    background-color: darkgray;
+    border-radius: 10px;
+    width: 300px;
+    height: 300px;
+    margin: 20px;
+    padding: 10px;
+}

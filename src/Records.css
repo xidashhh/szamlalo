@@ -1,0 +1,72 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 40px;
+  }
+
+  th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    transition: 0.5s;
+    background-color: lightblue;
+    width: 300px;
+  }
+  
+  td, tr {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    transition: 0.5s;
+    width: 300px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #ffffff;
+  }
+  
+  tr:nth-child(odd) {
+    background-color: #fafafa;
+  }
+
+  tr:hover {
+    background-color: lightgrey;
+    transition: 0.5s;
+  }
+
+  .deleteButton {
+    background-color: #ff5252;
+    width: 50px;
+    height: 25px;
+    scale: 1;
+    border-radius: 10000000000px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  .deleteButton:hover {
+    background-color: #ff5252;
+    width: 50px;
+    height: 25px;
+    scale: 1;
+    border-radius: 10000000000px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+    scale: 1.1;
+  }
+
+  .errorMessage{
+    color: white;
+    background-color: darkred;
+    width: 500px;
+    height: 50px;
+    margin: auto;
+    text-align: center;
+    border-radius: 1000px;
+    opacity: 100%;
+  }
