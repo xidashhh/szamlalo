@@ -2,6 +2,7 @@ import { title } from "process";
 import React, { useState } from "react"
 import './Records.css'
 import { Users } from "./RecordsInterface";
+import axios from "axios";
 
 let nextId = 0;
 
@@ -40,6 +41,20 @@ const Records = () =>{
         else {
             setRecords([...records, {id:nextId++, name: name, age:age, email:email}])
             setError(false)
+
+            axios.post("http://localhost:3000/api/users", {
+                name: name,
+                age: age,
+                email: email,
+            })
+            .then((response) => console.log(response))
+            .catch((err) => console.log(err));
+
+            axios.get("http://localhost:3000/api/users/4")
+            .then((response)=> {
+                console.log(response.data.id);
+            })
+            .catch((err) => console.log(err))
         }
     }
 
