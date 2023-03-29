@@ -1,5 +1,5 @@
 import { title } from "process";
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import './Records.css'
 import { Users } from "./RecordsInterface";
 import axios from "axios";
@@ -10,9 +10,7 @@ export const USER_RECORDS: Users[] = [
 
 ]
 
-
 const Records = () =>{
-
     const [records, setRecords] = useState(USER_RECORDS);
     const [name, setName] = useState('');
     const [age, setAge] = useState(0);
@@ -24,6 +22,18 @@ const Records = () =>{
     const [hasError, setError] = useState(false);
     const [editError, setEditErrorMsg] = useState('');
     const [hasEditError, setEditError] = useState(false);
+    const [data, setData] = useState(USER_RECORDS)
+
+    useEffect(() => {
+        axios.get('http://localhost:3000/api/users')
+            .then(res => {
+                console.log(res);
+                setData(res.data)
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    })
 
     function addItem() {
         if(name === '') {
@@ -84,13 +94,20 @@ const Records = () =>{
     }
 
     
-    function deleteItem(id:number) {
+    function deleteItem(idItem:number) {
 
-        const newRecords = records.filter((itemid) => itemid.id != id);
-        setRecords(newRecords);
+        axios.delete(`http://localhost:3000/api/users/${idItem}`)
+            .then(res => {
+                console.log(res);
+                const newData = data.filter((itemid) => itemid.id != idItem);
+                setData(newData)
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
     
-    function editItem(id:number) {
+    function editItem(idItem:number) {
         if(nameEdit === '') {
             setEditErrorMsg("Edited name can not be blank!")
             setEditError(true)
@@ -105,19 +122,20 @@ const Records = () =>{
         }
         else {
         setEditError(false)
-        records.forEach(element => {
-            if(element.id === id) {
-                element.name = nameEdit;
-                element.age = ageEdit;
-                element.email = emailEdit;
-                setRecords([...records])
-            }
-        });
-        
+        axios.put(`http://localhost:3000/api/users/${idItem}`, {
+            name: nameEdit,
+            age: ageEdit,
+            email: emailEdit
+        })
+            .then(res => {
+                console.log(res);
+                setData([...data])
+            })
+            .catch(err => {
+                console.log(err);
+            })        
     }
 }
-    
-
     return (
         <>
         <form className="formAdd" onSubmit={(event) => {event.preventDefault()}}>
@@ -167,7 +185,7 @@ const Records = () =>{
                 </tr>
             </thead>
             <tbody>
-            {records.map(item => 
+            {data.map(item => 
             <tr key={item.id}>
                 <td>{item.name}</td>
                 <td>{item.age}</td>
