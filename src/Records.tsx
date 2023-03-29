@@ -22,7 +22,19 @@ const Records = () =>{
     const [hasError, setError] = useState(false);
     const [editError, setEditErrorMsg] = useState('');
     const [hasEditError, setEditError] = useState(false);
-    const [data, setData] = useState(USER_RECORDS)
+    // const [data, setData] = useState<Users[]>([])
+    const [data, setData] = useState<Users[]>([])
+
+    // useEffect(() => {
+    //     axios.get('http://localhost:3000/api/users')
+    //         .then(res => {
+    //             console.log(res);
+    //             setData(res.data)
+    //         })
+    //         .catch(err => {
+    //             console.log(err);
+    //         })
+    // },[])
 
     useEffect(() => {
         axios.get('http://localhost:3000/api/users')
